@@ -2,7 +2,7 @@ var updateMoods = function () {
     $.ajax({
         url: 'https://purch-barometre.herokuapp.com/mood'
     }).done(function(data) {
-        var $table = $('.table tbody');
+        var $table = $('#mood-list');
         $table.empty();
         data.forEach(function(elem) {
             var date = moment(elem.createdAt);
@@ -11,14 +11,9 @@ var updateMoods = function () {
     });
 };
 
-var submitMood = function (event) {
-    $(event).preventDefault();
-    $('form').submit(function(){
-        updateMoods();
-    });
-};
-
-
 $(function() {
     updateMoods();
+    $('#mood-form').ajaxForm(function() { 
+        updateMoods();
+    });
 });
