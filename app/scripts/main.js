@@ -13,14 +13,7 @@ $(function() {
     };
 
     updateMoods();
-
-    $('#mood-form').submit(function(e) {
-        e.preventDefault();
-
-        $(this).ajaxSubmit({
-            success: function() {
-                updateMoods();
-            }
-        });
+    $('#mood-form').ajaxForm(function() {
+        updateMoods();
     });
 });
