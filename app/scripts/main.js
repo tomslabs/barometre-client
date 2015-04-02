@@ -1,14 +1,20 @@
 $(function() {
+    var endpoint = 'https://purch-barometre.herokuapp.com/mood';
+
     var updateMoods = function () {
         $.ajax({
-            url: 'https://purch-barometre.herokuapp.com/mood'
+            url: endpoint
         }).done(function(data) {
-            var $table = $('#mood-list');
-            $table.empty();
-            data.forEach(function(elem) {
-                var date = moment(elem.createdAt);
-                $table.append('<tr><td>' + elem.email + '</td><td>' + elem.mood + '</td><td>' + date.format('YYYY-MM-DD HH:mm:SS') + '</td></tr>');
-            });
+            directives = {
+                createdAt: {
+                    text: function(params){
+                        var date = moment(params.createdAt);
+                        return date.format('YYYY-MM-DD HH:mm:SS');
+                    }
+                }
+            }
+            var $table = $('#mood-list tbody');
+            $table.render(data, directives);
         });
     };
 

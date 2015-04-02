@@ -57,14 +57,18 @@
             </form>
         </div>
           <div class="col-lg-6">
-              <table class="table table-striped table-responsive">
+              <table id="mood-list" class="table table-striped table-responsive">
                   <thead>
                     <th>Email</th>
                     <th>Humeur</th>
                     <th>Date</th>
                   </thead>
-                  <tbody id="mood-list">
-
+                  <tbody>
+                      <tr>
+                        <td class="email"></td>
+                        <td class="mood"></td>
+                        <td class="createdAt"></td>
+                      </tr>
                   </tbody>
               </table>
           </div>
@@ -94,6 +98,7 @@
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/jquery-form/jquery.form.js"></script>
+    <script src="bower_components/transparency/dist/transparency.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
